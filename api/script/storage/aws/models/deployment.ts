@@ -11,7 +11,15 @@ export function createDeployment(sequelize: Sequelize.Sequelize) {
             model: sequelize.models["package"],
             key: 'id',
           },},
-        createdTime: { type: Sequelize.TIME, allowNull: false },
+        appId: { type: Sequelize.STRING, allowNull: false, references: {
+            model: sequelize.models["apps"],
+            key: 'id',
+          },},
+        accountId: { type: Sequelize.STRING, allowNull: false, references: {
+            model: sequelize.models["account"],
+            key: 'id',
+          },},
+        createdTime: { type: Sequelize.FLOAT, allowNull: false },
     })
 }
 

@@ -27,7 +27,16 @@ export function createPackage(sequelize: Sequelize.Sequelize) {
         rollout: { type: Sequelize.FLOAT, allowNull: true },
         size: { type: Sequelize.FLOAT, allowNull: false },
         uploadTime: { type: Sequelize.TIME, allowNull: false },
-        id: { type: Sequelize.UUID, defaultValue: Sequelize.UUIDV4, allowNull: false , primaryKey: true},
+        appId: { type: Sequelize.STRING, allowNull: false, references: {
+            model: sequelize.models["apps"],
+            key: 'id',
+          },},
+        accountId: { type: Sequelize.STRING, allowNull: false, references: {
+            model: sequelize.models["account"],
+            key: 'id',
+          },},
+        deploymentId: { type: Sequelize.STRING, allowNull: false},
+        id: { type: Sequelize.STRING, allowNull: false , primaryKey: true},
     })
 }
 
