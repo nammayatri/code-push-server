@@ -9,12 +9,12 @@ import { createAccessKey } from "./accessKey";
 
 export function createModels(sequelize: Sequelize.Sequelize) {
     return q.all([ 
-      createPackage(sequelize)
+      createAccount(sequelize)
+    , createApp(sequelize)
+    , createPackage(sequelize)
     , createDeployment(sequelize)
-    , createAccount(sequelize)
     , createAccessKey(sequelize)
-    , createCollaborators(sequelize)
-    , createApp(sequelize)])
+    , createCollaborators(sequelize)])
 }
 
 export const MODELS = {
